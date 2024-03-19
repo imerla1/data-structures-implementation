@@ -13,3 +13,15 @@ class LinkedList:
         self.head = new_node
         self.tail = new_node
         self.length = 1
+
+    def __str__(self) -> None:
+        string_value = ""
+        temp = self.head
+        while temp is not None:
+            string_value += str(temp.value) + "-"
+            temp = temp.next
+        return string_value
+
+l = LinkedList(5)
+l.head.next = Node(6)
+print(l)
