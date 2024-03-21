@@ -12,7 +12,7 @@ class LinkedList:
         new_node = Node(value) if value else None
         self.head = new_node if new_node else None
         self.tail = new_node if new_node else None
-        self.length = 0
+        self.length = 1 if new_node else 0
 
     def __repr__(self) -> None:
         string_value = ""
@@ -38,8 +38,28 @@ class LinkedList:
 
     def pop(self):
         if self.head is None:
-            return ...
+            return
+        if self.length == 1:
+            temp = self.head
+            self.head = None
+            self.tail = None
+            self.length = 0
+            return temp
+
+        new_tail_index = self.length - 1
+        temp_tail = self.tail
+        temp = self.head
+        new_tail = None
+        for _ in range(new_tail_index):
+            new_tail = temp
+            temp = temp.next
+        self.tail = new_tail
+        self.length -= 1
+        return temp_tail
 
 
-l = LinkedList()
+l = LinkedList(6)
 # l.append(5)
+# l.append(6)
+# l.append(235)
+# l.append(54)
