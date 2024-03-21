@@ -57,9 +57,20 @@ class LinkedList:
         self.length -= 1
         return temp_tail
 
+    def prepend(self, value: int):
+        node = Node(value)
+        if self.head is None:
+            self.head = node
+            self.tail = node
+        else:
+            node.next = self.head
+            self.head = node
+        self.length += 1
+    
+
 
 l = LinkedList(6)
-# l.append(5)
-# l.append(6)
-# l.append(235)
-# l.append(54)
+l.append(5)
+l.append(6)
+l.append(235)
+l.append(54)
