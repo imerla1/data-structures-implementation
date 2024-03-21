@@ -66,7 +66,21 @@ class LinkedList:
             node.next = self.head
             self.head = node
         self.length += 1
-    
+
+    def pop_first(self):
+        if self.head is None:
+            return
+        if self.length == 1:
+            temp = self.head
+            self.head = None
+            self.tail = None
+            self.length = 0
+            return temp
+        temp = self.head
+        self.head = self.head.next
+        temp.next = None
+        self.length -= 1
+        return temp
 
 
 l = LinkedList(6)
