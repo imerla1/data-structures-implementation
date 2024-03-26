@@ -81,7 +81,7 @@ class LinkedList:
         temp.next = None
         self.length -= 1
         return temp
-    
+
     def get(self, index: int):
         if index < 0 or index >= self.length:
             return
@@ -90,7 +90,7 @@ class LinkedList:
             temp = temp.next
 
         return temp
-    
+
     def set_value(self, index: int, value: int):
         temp = self.get(index)
         if temp:
@@ -98,6 +98,24 @@ class LinkedList:
             return True
         return False
 
+    def insert(self, index: int, value: int):
+        if index < 0 or index > self.length:
+            print("zd")
+            return
+        if index == 0:
+            print("bd")
+            self.prepend(value)
+        elif (index) == self.length:
+            print("ch")
+            self.append(value)
+        else:
+            node = Node(value)
+            temp_prev_node = self.get(index-1)
+            node.next = temp_prev_node.next
+            temp_prev_node.next = node
+            self.length += 1
+
+            
 
 
 l = LinkedList(6)
@@ -105,3 +123,4 @@ l.append(5)
 l.append(6)
 l.append(235)
 l.append(54)
+
