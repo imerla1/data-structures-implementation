@@ -9,7 +9,7 @@ class Node:
 
 class LinkedList:
     def __init__(self, value: Union[None, int] = None) -> None:
-        new_node = Node(value) if value else None
+        new_node = Node(value) if value is not None else None
         self.head = new_node if new_node else None
         self.tail = new_node if new_node else None
         self.length = 1 if new_node else 0
@@ -118,7 +118,6 @@ class LinkedList:
             if index == 0:
                 self.pop_first()
             elif index == self.length - 1:
-                print("POP")
                 self.pop()
             else:
                 temp = self.get(index - 1)
@@ -127,9 +126,9 @@ class LinkedList:
                 self.length -= 1
 
 
-l = LinkedList(6)
-l.append(5)
-l.append(6)
-l.append(235)
-l.append(54)
-l.pop()
+l = LinkedList(0)
+l.append(1)
+l.append(2)
+l.append(3)
+l.append(4)
+
