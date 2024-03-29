@@ -125,6 +125,19 @@ class LinkedList:
                 temp.next = element_to_remove.next
                 self.length -= 1
 
+    def reverse(self):
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+        before = None
+        for _ in range(self.length):
+            after = temp.next
+            temp.next = before
+            before = temp
+            temp = after 
+
+
+        
 
 l = LinkedList(0)
 l.append(1)
@@ -132,3 +145,4 @@ l.append(2)
 l.append(3)
 l.append(4)
 
+l.reverse()
