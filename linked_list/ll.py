@@ -112,7 +112,7 @@ class LinkedList:
             self.length += 1
 
     def remove(self, index):
-        if index < 0 or index > self.length:
+        if index < 0 or index >= self.length:
             return
         if self.head:
             if index == 0:
