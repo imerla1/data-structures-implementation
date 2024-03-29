@@ -37,6 +37,8 @@ class LinkedList:
         self.length += 1
 
     def pop(self):
+        # TODO refactor it doesn't work
+        # NOTE don't forget update length counter
         if self.head is None:
             return
         if self.length == 1:
@@ -45,17 +47,14 @@ class LinkedList:
             self.tail = None
             self.length = 0
             return temp
-
-        new_tail_index = self.length - 1
-        temp_tail = self.tail
-        temp = self.head
-        new_tail = None
-        for _ in range(new_tail_index):
-            new_tail = temp
-            temp = temp.next
-        self.tail = new_tail
+        else:
+            temp, prev = self.head, self.head
+            while (temp.next):
+                prev = temp
+                temp = temp.next
+            self.tail = prev
+            self.tail.next = None
         self.length -= 1
-        return temp_tail
 
     def prepend(self, value: int):
         node = Node(value)
@@ -100,13 +99,10 @@ class LinkedList:
 
     def insert(self, index: int, value: int):
         if index < 0 or index > self.length:
-            print("zd")
             return
         if index == 0:
-            print("bd")
             self.prepend(value)
         elif (index) == self.length:
-            print("ch")
             self.append(value)
         else:
             node = Node(value)
@@ -115,7 +111,20 @@ class LinkedList:
             temp_prev_node.next = node
             self.length += 1
 
-            
+    def remove(self, index):
+        if index < 0 or index > self.length:
+            return
+        if self.head:
+            if index == 0:
+                self.pop_first()
+            elif index == self.length - 1:
+                print("POP")
+                self.pop()
+            else:
+                temp = self.get(index - 1)
+                element_to_remove = self.get(index)
+                temp.next = element_to_remove.next
+                self.length -= 1
 
 
 l = LinkedList(6)
@@ -123,4 +132,4 @@ l.append(5)
 l.append(6)
 l.append(235)
 l.append(54)
-
+l.pop()
