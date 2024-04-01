@@ -43,5 +43,53 @@ class DoublyLinkedList:
         # update length counter
         self.length += 1
 
+    def pop(self):
+        if self.length == 0:
+            return
+        elif self.length == 1:
+            temp = self.head
+            self.head = None
+            self.tail = None
+            self.length -= 1
+            return temp
+        else:
+            temp = self.tail
+            new_tail = self.tail.prev
+            new_tail.next = None
+            self.tail = new_tail
+            self.length -= 1
+            return temp
+        
+    def get(self, index):
+        if index < 0 or index >= self.length:
+            return
+        
+        elif index < self.length / 2:
+            print("from head")
+            temp = self.head
+            for _ in range(index):
+                temp = temp.next
+            return temp
+        else:
+            print("from tail")
+            temp = self.tail
+            for _ in range(self.length - 1 - index):
+                temp = temp.prev
+            return temp
+        
 
-dll = DoublyLinkedList(5)
+
+
+if __name__ == "__main__":
+    dll = DoublyLinkedList(0)
+    dll.append(1)
+    dll.append(2)
+    dll.append(3)
+    dll.append(4)
+    dll.append(5)
+    dll.append(6)
+    dll.append(7)
+    dll.append(8)
+    dll.append(9)
+
+
