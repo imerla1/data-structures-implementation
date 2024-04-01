@@ -43,6 +43,19 @@ class DoublyLinkedList:
         # update length counter
         self.length += 1
 
+    def prepend(self, value):
+        node = Node(value)
+        if self.length == 0:
+            self.head = node
+            self.tail = node
+        else:
+            temp = self.head
+            node.next = temp
+            temp.prev = node
+            self.head = node
+
+        self.length += 1
+
     def pop(self):
         if self.length == 0:
             return
@@ -81,19 +94,22 @@ class DoublyLinkedList:
             item.value = new_value
             return True
         return False
+    
+    def insert(self, index, value):
+        if index < 0 or index >= self.length:
+            raise IndexError("LinkedList index out of range")
+        if index == 0:
+            node = Node(value)
+
+        temp = self.get(index)
+        prev = temp.prev
+        if temp:
+            ...
+
 
 
 
 if __name__ == "__main__":
-    dll = DoublyLinkedList(0)
-    dll.append(1)
-    dll.append(2)
-    dll.append(3)
-    dll.append(4)
-    dll.append(5)
-    dll.append(6)
-    dll.append(7)
-    dll.append(8)
-    dll.append(9)
-
+    dll = DoublyLinkedList()
+   
 
