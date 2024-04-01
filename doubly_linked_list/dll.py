@@ -65,18 +65,22 @@ class DoublyLinkedList:
             return
         
         elif index < self.length / 2:
-            print("from head")
             temp = self.head
             for _ in range(index):
                 temp = temp.next
             return temp
         else:
-            print("from tail")
             temp = self.tail
             for _ in range(self.length - 1 - index):
                 temp = temp.prev
             return temp
         
+    def set_value(self, index, new_value):
+        item = self.get(index)
+        if item:
+            item.value = new_value
+            return True
+        return False
 
 
 
