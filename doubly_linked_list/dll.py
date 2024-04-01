@@ -55,6 +55,21 @@ class DoublyLinkedList:
             self.head = node
 
         self.length += 1
+    def pop_first(self):
+        if self.length == 0:
+            return
+        temp = self.head
+        if self.length == 1:
+            self.head = None
+            self.tail = None
+        else:
+            next_to_head = self.head.next
+            self.head = next_to_head
+            self.head.prev = None
+            temp.next = None
+
+        self.length -= 1
+        return temp
 
     def pop(self):
         if self.length == 0:
@@ -110,6 +125,13 @@ class DoublyLinkedList:
 
 
 if __name__ == "__main__":
-    dll = DoublyLinkedList()
+    dll = DoublyLinkedList(0)
+    dll.append(1)
+    dll.append(2)
+    dll.append(3)
+    dll.append(4)
+    dll.append(5)
+    dll.append(6)
+
    
 
