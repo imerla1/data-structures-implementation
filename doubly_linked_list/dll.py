@@ -6,7 +6,7 @@ class Node:
 
 
 class DoublyLinkedList:
-    def __init__(self, value = None) -> None:
+    def __init__(self, value=None) -> None:
         new_node = Node(value) if value is not None else None
         self.head = new_node if new_node else None
         self.tail = new_node if new_node else None
@@ -22,7 +22,7 @@ class DoublyLinkedList:
 
     def __len__(self) -> int:
         return self.length
-    
+
     def append(self, value):
         node = Node(value)
         if self.length == 0:
@@ -38,7 +38,6 @@ class DoublyLinkedList:
             node.prev = temp
             self.tail.next = node
             self.tail = node
-            
 
         # update length counter
         self.length += 1
@@ -55,6 +54,7 @@ class DoublyLinkedList:
             self.head = node
 
         self.length += 1
+
     def pop_first(self):
         if self.length == 0:
             return
@@ -87,11 +87,11 @@ class DoublyLinkedList:
             self.tail = new_tail
             self.length -= 1
             return temp
-        
+
     def get(self, index):
         if index < 0 or index >= self.length:
             return
-        
+
         elif index < self.length / 2:
             temp = self.head
             for _ in range(index):
@@ -102,14 +102,14 @@ class DoublyLinkedList:
             for _ in range(self.length - 1 - index):
                 temp = temp.prev
             return temp
-        
+
     def set_value(self, index, new_value):
         item = self.get(index)
         if item:
             item.value = new_value
             return True
         return False
-    
+
     def insert(self, index, value):
         if index < 0 or index > self.length:
             raise IndexError("LinkedList index out of range")
@@ -133,9 +133,23 @@ class DoublyLinkedList:
 
         self.length += 1
 
-
-
-
+    def remove(self, index):
+        if self.length == 0:
+            return 
+        elif index < 0 or index > self.length:
+            raise IndexError("LinkedList index out of range")
+        elif index == 0:
+            self.pop_first()
+            return
+        elif index == self.length:
+            self.pop()
+            return
+        else:
+            node_to_remove = self.get(index)
+            prev = node_to_remove.prev
+            prev.next = node_to_remove.next
+            self.length -= 1
+            
 
 if __name__ == "__main__":
     dll = DoublyLinkedList(0)
@@ -145,6 +159,3 @@ if __name__ == "__main__":
     dll.append(4)
     dll.append(5)
     dll.append(6)
-
-   
-
