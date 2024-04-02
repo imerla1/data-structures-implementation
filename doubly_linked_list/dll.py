@@ -111,15 +111,28 @@ class DoublyLinkedList:
         return False
     
     def insert(self, index, value):
-        if index < 0 or index >= self.length:
+        if index < 0 or index > self.length:
             raise IndexError("LinkedList index out of range")
-        if index == 0:
-            node = Node(value)
 
-        temp = self.get(index)
-        prev = temp.prev
-        if temp:
-            ...
+        new_node = Node(value)
+
+        if index == 0:
+            self.prepend(value)
+            return
+        elif index == self.length:
+            self.append(value)
+            return
+
+        current_node = self.get(index)
+        previous_node = current_node.prev
+
+        previous_node.next = new_node
+        new_node.prev = previous_node
+        new_node.next = current_node
+        current_node.prev = new_node
+
+        self.length += 1
+
 
 
 
