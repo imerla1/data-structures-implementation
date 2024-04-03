@@ -28,7 +28,7 @@ class Stack:
     def push(self, value):
         new_node = Node(value)
         if self.height == 0:
-            self.top = Node
+            self.top = new_node
         else:
             temp = self.top
             new_node.next = temp
