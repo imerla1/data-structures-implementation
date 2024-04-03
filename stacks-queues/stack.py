@@ -5,6 +5,7 @@ class Node:
 
 
 class Stack:
+    # LIFO
     def __init__(self, value) -> None:
         new_node = Node(value)
         self.top = new_node
