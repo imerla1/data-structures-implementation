@@ -1,7 +1,7 @@
 class Node:
     def __init__(self, value, next=None) -> None:
         self.value = value
-        self.next = None
+        self.next = next
 
 
 class Stack:
@@ -36,6 +36,24 @@ class Stack:
             self.top = new_node
         self.height += 1
 
+    def pop(self):
+        element_to_pop = None
+
+        if self.height == 0:
+            raise IndexError("pop from empty stack")
+        if self.height == 1:
+            element_to_pop = self.top
+            self.top = None
+        else:
+            element_to_pop = self.top
+            
+            self.top = self.top.next
+            element_to_pop.next = None
+        self.height -= 1
+        return element_to_pop
+
 
 stack = Stack(5)
 stack.push(444)
+x = stack.pop()
+y = stack.pop()
