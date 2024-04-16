@@ -11,4 +11,4 @@ Hash tables are useful for several reasons:
 - **Dynamic Sizing**: Hash tables can dynamically resize themselves to accommodate more key-value pairs, which is useful when the number of items stored changes over time.
 - **Widely Used**: Hash tables are used in various programming languages and libraries due to their efficiency and versatility.
 
-Overall, hash tables are a fundamental data structure in computer science, offering a balance of efficiency and flexibility for storing and accessing key-value pairs.
+Overall, hash tables are a fundamental data structure in computer science, offering a balance of efficiency and flexibility for storing and accessing key-value pairs.****
