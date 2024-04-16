@@ -14,3 +14,12 @@ class Graph:
             self.adj_list[v2].append(v1)
             return True
         return False
+    def print_graph(self):
+        for vertex, edges in self.adj_list.items():
+            print(f"{vertex}: {', '.join(edges)}")
+
+graph = Graph()
+graph.add_vertex("A")
+graph.add_vertex("B")
+graph.add_vertex("C")
+graph.add_edges("A", "B")
