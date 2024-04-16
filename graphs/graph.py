@@ -1,9 +1,6 @@
-from typing import Dict, List
-
-
 class Graph:
     def __init__(self) -> None:
-        self.adj_list  = {}
+        self.adj_list = {}
 
     def add_vertex(self, vertex):
         if vertex not in self.adj_list.keys():
@@ -17,6 +14,7 @@ class Graph:
             self.adj_list[v2].append(v1)
             return True
         return False
+
     def print_graph(self):
         for vertex, edges in self.adj_list.items():
             print(f"{vertex}: {', '.join(edges)}")
@@ -28,13 +26,13 @@ class Graph:
             return True
         return False
 
+    def remove_vertex(self, vertex_name):
+        if vertex_name in self.adj_list:
+            vertex_to_remove = self.adj_list[vertex_name]
+            for vertex in vertex_to_remove:
+                self.adj_list[vertex].remove(vertex_name)
+            del self.adj_list[vertex_name]
+            return True
+        return False
 
 
-
-    
-
-graph = Graph()
-graph.add_vertex("A")
-graph.add_vertex("B")
-graph.add_edges("A", "B")
-graph.print_graph()
